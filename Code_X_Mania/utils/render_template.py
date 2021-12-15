@@ -42,10 +42,4 @@ async def render_page(message_id):
                 async with s.get(src) as u:
                     file_size = human_size(u.headers.get('Content-Type'))
                     html = (await r.read()) % (heading, file_name, src, href, file_size)
-    else:
-        async with aiofiles.open('Code_X_Mania/template/dl.html') as r:
-            async with aiohttp.ClientSession() as s:
-                async with s.get(href) as u:
-                    file_size = human_size(u.headers.get('Content-Type'))
-                    html = (await r.read()) % (heading, file_name, src, href, file_size)
     return html
